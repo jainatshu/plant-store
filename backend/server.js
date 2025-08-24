@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || 'https://urvann-4m0o9aut8-atishay-jains-projects-56d9a8a2.vercel.app/',  // your frontend URL
+    origin: '*',  // your frontend URL
     
     credentials: true, // if you're using cookies / auth headers
   })
