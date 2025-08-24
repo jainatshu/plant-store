@@ -1,0 +1,34 @@
+const mongoose = require('mongoose');
+
+const plantSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  categories: [{
+    type: String,
+    required: true,
+    trim: true
+  }],
+  inStock: {
+    type: Boolean,
+    default: true
+  },
+  imageUrl: {
+    type: String,
+    default: ''
+  }
+}, {
+  timestamps: true
+});
+
+// Create text index for search functionality
+plantSchema.index({ name: 'text', categories: 'text' });
+
+module.exports = mongoose.model('Plant', plantSchema);
